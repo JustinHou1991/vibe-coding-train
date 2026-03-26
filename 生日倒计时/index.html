@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日倒计时</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background">
+        <div class="particles" id="particles"></div>
+    </div>
+    
+    <div class="container">
+        <h1>生日倒计时</h1>
+        
+        <div class="current-user-display" id="current-user-display">
+            <span class="current-user-name" id="current-user-name">请创建或选择用户</span>
+        </div>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="user-name">用户名称：</label>
+                <input type="text" id="user-name" class="text-input" placeholder="请输入用户名称">
+            </div>
+            
+            <div class="input-group date-input-group">
+                <label>生日日期：</label>
+                <div class="date-input-wrapper">
+                    <div class="date-mode-toggle">
+                        <button type="button" class="mode-btn active" id="picker-mode-btn" data-mode="picker">选择器</button>
+                        <button type="button" class="mode-btn" id="manual-mode-btn" data-mode="manual">手动输入</button>
+                    </div>
+                    <div class="date-input-container">
+                        <div class="date-picker-wrapper" id="date-picker-wrapper">
+                            <input type="date" id="birthday-date-picker" class="date-input">
+                        </div>
+                        <div class="date-manual-wrapper" id="date-manual-wrapper" style="display: none;">
+                            <input type="text" id="birthday-date-manual" class="date-input manual-input" placeholder="YYYY-MM-DD" maxlength="10">
+                            <span class="date-format-hint">格式：年-月-日</span>
+                        </div>
+                    </div>
+                    <div class="date-error" id="date-error"></div>
+                </div>
+            </div>
+            
+            <button id="create-user" class="btn-set">创建用户</button>
+            <button id="update-user" class="btn-update" style="display: none;">更新信息</button>
+        </div>
+        
+        <div class="countdown-container">
+            <div class="time-unit" id="days-unit">
+                <div class="flip-card-wrapper">
+                    <div class="flip-card" id="days-card">
+                        <div class="flip-card-top">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-bottom">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="unit-label">天</span>
+            </div>
+            
+            <div class="time-separator">:</div>
+            
+            <div class="time-unit" id="hours-unit">
+                <div class="flip-card-wrapper">
+                    <div class="flip-card" id="hours-card">
+                        <div class="flip-card-top">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-bottom">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="unit-label">时</span>
+            </div>
+            
+            <div class="time-separator">:</div>
+            
+            <div class="time-unit" id="minutes-unit">
+                <div class="flip-card-wrapper">
+                    <div class="flip-card" id="minutes-card">
+                        <div class="flip-card-top">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-bottom">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="unit-label">分</span>
+            </div>
+            
+            <div class="time-separator">:</div>
+            
+            <div class="time-unit" id="seconds-unit">
+                <div class="flip-card-wrapper">
+                    <div class="flip-card" id="seconds-card">
+                        <div class="flip-card-top">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-bottom">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span class="flip-card-value">00</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="unit-label">秒</span>
+            </div>
+        </div>
+        
+        <div class="birthday-info" id="birthday-info"></div>
+        
+        <div class="users-section">
+            <h2 class="users-title">用户列表</h2>
+            <div class="users-container" id="users-container">
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
