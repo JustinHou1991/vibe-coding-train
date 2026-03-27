@@ -455,8 +455,22 @@ label {
 
 .birthday-info {
     margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.solar-date {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.lunar-date {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
 }
 
@@ -490,6 +504,7 @@ label {
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
+    position: relative;
 }
 
 .user-card:hover {
@@ -514,6 +529,12 @@ label {
 .user-card-birthday {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.user-card-lunar {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
 }
 
 .user-card-delete {
@@ -531,10 +552,6 @@ label {
     line-height: 1;
     opacity: 0;
     transition: all 0.3s ease;
-}
-
-.user-card {
-    position: relative;
 }
 
 .user-card:hover .user-card-delete {

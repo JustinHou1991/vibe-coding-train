@@ -379,14 +379,20 @@ class BirthdayCountdown {
     }
 
     updateBirthdayInfo() {
-        const infoElement = document.getElementById('birthday-info');
+        const solarDateElement = document.getElementById('solar-date');
+        const lunarDateElement = document.getElementById('lunar-date');
+        
         if (this.currentUser) {
             const dateObj = new Date(this.currentUser.birthday);
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = dateObj.toLocaleDateString('zh-CN', options);
-            infoElement.textContent = `${this.currentUser.name}的生日: ${formattedDate}`;
+            const formattedSolarDate = dateObj.toLocaleDateString('zh-CN', options);
+            solarDateElement.textContent = `${this.currentUser.name}的生日: ${formattedSolarDate}`;
+            
+            const lunarDate = lunarCalendar.formatLunarDate(this.currentUser.birthday);
+            lunarDateElement.textContent = lunarDate;
         } else {
-            infoElement.textContent = '';
+            solarDateElement.textContent = '';
+            lunarDateElement.textContent = '';
         }
     }
 
@@ -402,6 +408,7 @@ class BirthdayCountdown {
             const dateObj = new Date(user.birthday);
             const options = { month: 'long', day: 'numeric' };
             const formattedDate = dateObj.toLocaleDateString('zh-CN', options);
+            const lunarDate = lunarCalendar.formatLunarDateShort(user.birthday);
             const isActive = this.currentUser && this.currentUser.id === user.id;
             
             return `
@@ -409,6 +416,7 @@ class BirthdayCountdown {
                     <button class="user-card-delete" onclick="birthdayCountdown.deleteUser('${user.id}', event)">×</button>
                     <div class="user-card-name">${this.escapeHtml(user.name)}</div>
                     <div class="user-card-birthday">${formattedDate}</div>
+                    <div class="user-card-lunar">${lunarDate}</div>
                 </div>
             `;
         }).join('');
